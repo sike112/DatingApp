@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rejected</title>
+    <!-- Link to Google Fonts for Aldrich -->
+    <link href="https://fonts.googleapis.com/css2?family=Aldrich&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Aldrich', sans-serif; /* Applying Aldrich font to the body */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #e0e0e0;
+        }
+        .mobile-container {
+            width: 385px; /* Container width */
+            height: 712px; /* Container height */
+            background-color: rgba(79, 2, 79, 0.8); /* Purple background */
+            border-radius: 30px; /* Rounded corners */
+            overflow: hidden;
+            position: relative;
+        }
+        .status-bar {
+            position: absolute;
+            top: 0; /* Align at the top */
+            left: 0;
+            width: 100%; /* Full width of the container */
+            height: 40px; /* Adjusted height to make it smaller */
+            background-image: url('static/images/Status Bar.png');
+            background-size: cover; /* Cover the entire area */
+            background-position: center;
+        }
+        .message-box {
+            width: 90%; /* Box width */
+            height: 70%; /* Box height */
+            background-color: white;
+            color: black;
+            padding: 20px;
+            position: absolute; /* Positioned relative to mobile container */
+            bottom: 0; /* Positioned at the bottom of the container */
+            border-radius: 30px; /* Rounded corners */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Shadow for visibility */
+            text-align: left; /* Align text to the left */
+            display: flex; /* Use flexbox for alignment */
+            flex-direction: column; /* Stack items vertically */
+            align-items: flex-start; /* Align items to the start (left) */
+        }
+        .search-icon-container {
+            position: absolute;
+            top: 61px;
+            left: 24px;
+            width: 44px;
+            height: 44px;
+            background-color: #DD88CF; /* Color for the ellipse */
+            border-radius: 50%; /* Circular background */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .search-icon-container img {
+            width: 22px;
+            height: 22px;
+            position: relative;
+            top: -1px; /* Center vertically */
+            left: -1px; /* Center horizontally */
+        }
+        .user-images {
+            width: 100%; /* Full width of the message box */
+            padding: 0 20px; /* Padding to align with box padding */
+        }
+        .user-images img {
+            display: block;
+            width: 55%; /* Adjust width as needed */
+            height: auto;
+            margin: 5px 0; /* Reduced margin for closer images */
+            border-radius: 31px 0 0 0; /* Rounded top-left corner */
+        }
+        .user-images img:first-of-type {
+            margin: -10px 0 5px 0; /* Move User A image up by 10px */
+        }
+        .letter-a, .letter-b {
+            font-family: 'Aldrich', sans-serif;
+            font-size: 14px; /* Smaller font size */
+            font-weight: 400;
+            line-height: 14px;
+            text-align: left;
+            margin: 5px 0; /* Smaller margin */
+        }
+        .user-images .letter-b {
+            margin-top: 20px; /* Move letter B down */
+        }
+        .bottom-image {
+            position: absolute;
+            bottom: 20px; /* Distance from the bottom */
+            left: 50%; /* Center horizontally */
+            transform: translateX(-50%); /* Center the image horizontally */
+            width: 90%; /* Adjust the width as needed to make the image wider */
+        }
+        .icons-container {
+            position: absolute;
+            bottom: 37px; /* Adjusted to move the icons up slightly */
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            justify-content: space-between; /* Reduce space between icons */
+            width: 80%; /* Slightly reduced width */
+            padding: 0 5px; /* Add some padding to prevent touching the edges */
+        }
+        .icons-container img {
+            height: 30px; /* Adjust height as needed */
+            width: auto; /* Maintain aspect ratio */
+            margin: 0 3px; /* Reduced gap between icons */
+        }
+        .heading-container {
+            position: absolute;
+            top: 71px; /* Adjusted to move the heading down by 10px from the original position */
+            left: 50%;
+            transform: translateX(-50%); /* Center horizontally */
+            width: calc(100% - 80px); /* Adjust width to fit in the remaining space */
+            text-align: center;
+            color: white; /* Text color */
+        }
+        .heading-container h1 {
+            font-size: 20px; /* Font size for the heading */
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="mobile-container">
+        <!-- Status Bar Image -->
+        <div class="status-bar"></div>
+        <div class="heading-container">
+            <h1>Rejected</h1>
+        </div>
+        <div class="message-box">
+            <!-- Letter "A" above the images -->
+            <div class="letter-a">A</div>
+            <!-- User images container within the white box -->
+            <div class="user-images">
+                <!-- Image for User A -->
+                <img src="static/images/users/user-a/A user -uihut.png" alt="User A Image">
+                <!-- Letter "B" between the images -->
+                <div class="letter-b">B</div>
+                <!-- Image for User B -->
+                <img src="static/images/users/user-b/B users-uihut.png" alt="User B Image">
+            </div>
+        </div>
+        <!-- Search icon container -->
+        <div class="search-icon-container">
+            <img src="static/images/Search.png" alt="Search Icon">
+        </div>
+        <!-- Rounded Rectangle Image -->
+        <img class="bottom-image" src="static/images/Rounded Rectangle.png" alt="Rounded Rectangle">
+        <!-- Icons inside the rounded rectangle -->
+        <div class="icons-container">
+            <img src="static/images/Home.png" alt="Home Icon">
+            <img src="static/images/Discover.png" alt="Discover Icon">
+            <img src="static/images/Ellipse 308.png" alt="Sphere Icon">
+            <img src="static/images/Matches.png" alt="Matches Icon">
+            <img src="static/images/Message.png" alt="Messages Icon">
+        </div>
+    </div>
+</body>
+</html>
