@@ -4,7 +4,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def sent():
-    return render_template('menu_bar.html')
+    return render_template('shortlist.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
