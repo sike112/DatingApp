@@ -3,25 +3,189 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Messages</title>
+    <title>Messages View</title>
     <style>
         body {
             margin: 0;
             padding: 0;
-            background-color: white;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0; /* Light background to simulate a browser background */
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
+            overflow: hidden; /* Prevent scrolling */
         }
 
-        .messages-image {
-            width: 320px; /* Smaller width for better fit */
+        .phone-screen {
+            width: 365px;
+            height: 700px; /* Reduced height */
+            background-color: #3C0049; /* Purple background */
+            border-radius: 35px; /* Curved edges on all sides */
+            position: relative;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Shadow to give a mobile screen effect */
+            overflow: hidden;
+        }
+
+        .white-layer {
+            width: 100%;
+            height: 65%;
+            background-color: #FFFFFF;
+            position: absolute;
+            bottom: 0;
+            border-top-left-radius: 35px;
+            border-top-right-radius: 35px;
+            overflow: hidden; /* Ensure content fits within */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .chat-image {
+            width: 80%; /* Reduced width for a smaller image */
+            height: auto; /* Maintain aspect ratio */
+            margin-top: 5px; /* Move the image 5px down */
+        }
+
+        .home-indicator {
+            position: absolute;
+            bottom: 20px; /* Lifted up by 10px from the original position of 10px */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 134px; /* Adjust width to match the original aspect ratio */
+            height: 5px; /* Adjust height to match the original aspect ratio */
+        }
+
+        .rounded-rectangle {
+            position: absolute;
+            bottom: 15px; /* Position it slightly above the bottom */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px; /* Adjust width as needed */
+            height: 70px; /* Set a fixed height for the container */
+            background-color: #FFFFFF; /* Ensure background color matches the white-layer */
+            border-radius: 35px; /* Match the border radius */
+            display: flex;
+            align-items: center; /* Center icons vertically */
+            padding: 0 10px; /* Add padding for spacing */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Optional shadow for visual effect */
+        }
+
+        .icon-container {
+            display: flex;
+            justify-content: space-around;
+            width: 100%; /* Ensure it takes the full width */
+        }
+
+        .icon-wrapper {
+            position: relative;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .icon-wrapper::before {
+            content: '';
+            position: absolute;
+            width: 45px; /* Slightly smaller circle */
+            height: 45px; /* Slightly smaller circle */
+            background-color: #DD88CF; /* Darker pink background */
+            border-radius: 50%; /* Circle shape */
+            opacity: 0; /* Initially hidden */
+            transition: opacity 0.3s; /* Smooth transition */
+            z-index: 0; /* Place the circle behind the icon */
+        }
+
+        .icon-wrapper:hover::before {
+            opacity: 1; /* Show the circle on hover */
+        }
+
+        .icon-wrapper img {
+            width: 40px; /* Adjust width as needed */
+            height: auto; /* Maintain aspect ratio */
+            z-index: 1; /* Ensure the icon is above the circle */
+        }
+
+        /* Status Bar */
+        .status-bar {
+            position: absolute;
+            top: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 95%; /* Adjust width */
             height: auto;
+        }
+
+        /* Go Back Icon */
+        .go-back {
+            position: absolute;
+            top: 55px; /* Lowered position by 10px */
+            left: 20px; /* Positioned towards the left */
+            width: 38px; /* Increased size */
+            height: auto;
+            transition: opacity 0.3s; /* Hover effect */
+        }
+
+        .go-back:hover {
+            opacity: 0.7; /* Change opacity on hover */
+        }
+
+        /* Title */
+        .title {
+            position: absolute;
+            top: 55px; /* Align with the go-back icon */
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: Aldrich, sans-serif;
+            font-size: 24px;
+            font-weight: 400;
+            line-height: 30px;
+            text-align: center;
+            color: #FFFFFF; /* Text color */
+        }
+
+        /* Recent Matches Image */
+        .recent-matches {
+            position: absolute;
+            top: 115px; /* Adjust to place it a few pixels above the white box */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px; /* Adjust width as needed */
+            height: auto; /* Maintain aspect ratio */
         }
     </style>
 </head>
 <body>
-    <img src="static/images/43.png" alt="Messages" class="messages-image">
+    <div class="phone-screen">
+        <img src="static/images/Status Bar.png" alt="Status Bar" class="status-bar">
+        <img src="static/images/Back.png" alt="Go Back" class="go-back">
+        <div class="title">Messages</div>
+        <img src="static/images/Recent Matches (1).png" alt="Recent Matches" class="recent-matches">
+        <div class="white-layer">
+            <img src="static/images/users/Chats (1).png" alt="Chats" class="chat-image">
+        </div>
+        <img src="static/images/Home Indicator.png" alt="Home Indicator" class="home-indicator">
+        <div class="rounded-rectangle">
+            <div class="icon-container">
+                <div class="icon-wrapper">
+                    <img src="static\images\Home 1.png" alt="Home">
+                </div>
+                <div class="icon-wrapper">
+                    <img src="static/images/Discover.png" alt="Discover">
+                </div>
+                <div class="icon-wrapper">
+                    <img src="static/images/Add.png" alt="Add">
+                </div>
+                <div class="icon-wrapper">
+                    <img src="static/images/Matches.png" alt="Matches">
+                </div>
+                <div class="icon-wrapper">
+                    <img src="static/images/Message.png" alt="Messages">
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

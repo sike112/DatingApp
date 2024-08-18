@@ -3,25 +3,198 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Right Side Menu</title>
+    <title>Mobile Simulated View</title>
+    <link href="https://fonts.googleapis.com/css2?family=Aldrich&family=Poppins:wght@700&display=swap" rel="stylesheet">
     <style>
         body {
             margin: 0;
             padding: 0;
-            background-color: white;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
+            background-color: #f0f0f0; /* Background outside the simulated mobile screen */
         }
 
-        .menu-image {
-            width: 320px; /* Consistent width for a mobile view */
+        .mobile-container {
+            position: relative;
+            width: 375px; /* Width for mobile simulation */
+            height: 700px; /* Height for mobile simulation */
+            background: linear-gradient(135deg, #f0f0f0, #e0e0e0); /* Blend of grey and white */
+            border-radius: 30px; /* Curved edges */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Simulate a floating screen effect */
+            overflow: hidden;
+        }
+
+        .icon-container {
+            position: absolute;
+            top: 60px; /* Same level as the search icon */
+            right: 25px; /* Aligned to the right side */
+            width: 30px;
+            height: 30px; /* Set height to match width */
+            z-index: 1;
+            cursor: pointer;
+        }
+
+        .icon-container img {
+            width: 100%;
             height: auto;
+        }
+
+        .icon-container:hover {
+            transform: translateY(-3px); /* Floating hover effect */
+            transition: transform 0.3s ease;
+        }
+
+        .floating-screen {
+            position: absolute;
+            top: 50px; /* Starts from a bit above the menu icon */
+            right: 10px; /* Aligns with the menu icon */
+            width: calc(100% - 50px); /* 10px padding from both sides */
+            height: calc(100% - 75px); /* Adjusted height to maintain 25px gap from the bottom */
+            background-color: rgba(75, 22, 76, 0.9); /* Purple with 90% opacity */
+            border-radius: 20px; /* Curved edges */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Simulate floating effect */
+            transform: scaleY(0); /* Start with 0 scale for the animation */
+            transform-origin: top; /* Scale animation starts from the top */
+            transition: transform 0.5s ease-in-out; /* Animation for expanding effect */
+            z-index: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 20px 20px 20px; /* Increased top padding */
+            box-sizing: border-box;
+        }
+
+        .floating-screen.show {
+            transform: scaleY(1); /* Expand to full size */
+        }
+
+        .icon-container.menu.hidden {
+            visibility: hidden; /* Hide menu icon */
+        }
+
+        .icon-container.close.hidden {
+            visibility: hidden; /* Hide close icon */
+        }
+
+        .button {
+            font-family: 'Aldrich', sans-serif;
+            background-color: transparent;
+            border: none;
+            color: white;
+            font-size: 18px;
+            margin: 9px 0; /* 9px margin between buttons (5px + 4px) */
+            cursor: pointer;
+            text-align: left; /* Align text to the left */
+            width: 100%;
+            padding-left: 20px; /* Shift buttons towards the left */
+            box-sizing: border-box;
+            position: relative; /* Relative positioning for the pseudo-element */
+        }
+
+        .button::before {
+            content: '';
+            position: absolute;
+            width: 281px;
+            height: 38px;
+            background: url('static/images/Rectangle 2560.png') no-repeat center center;
+            background-size: cover;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            z-index: -1; /* Ensure it is behind the button text */
+            opacity: 0; /* Hidden by default */
+            transition: opacity 0.3s ease;
+        }
+
+        .button:hover::before {
+            opacity: 1; /* Show rectangular box when hovering over button */
+        }
+
+        .avatar-container {
+            display: flex;
+            align-items: center;
+            position: absolute;
+            top: 10px; /* Move it slightly down */
+            left: 20px; /* Adjusted to move it slightly right */
+        }
+
+        .avatar-container img {
+            width: 45px; /* Adjusted size */
+            height: auto;
+        }
+
+        .guest-user {
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 24px;
+            letter-spacing: -0.3px;
+            color: #FA5075;
+            margin-left: 8px; /* Spacing between avatar and text */
+        }
+
+        .logout-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px; /* Slight margin to create space from the last button */
+            margin-bottom: 5px; /* 5px from the bottom */
+        }
+
+        .logout-container img {
+            width: 90px; /* Increased size for logout icon */
+            height: auto;
+            cursor: pointer;
+            transition: transform 0.3s ease; /* Ensure smooth hover effect */
+        }
+
+        .logout-container img:hover {
+            transform: translateY(-3px); /* Floating hover effect */
         }
     </style>
 </head>
 <body>
-    <img src="static/images/Right side menu (2).png" alt="Right Side Menu" class="menu-image">
+    <div class="mobile-container">
+        <div class="icon-container menu" onclick="toggleFloatingScreen()">
+            <img src="static/images/m2i8G6G6b1m2A0G6.png" alt="Menu Icon">
+        </div>
+        <div class="icon-container close hidden" onclick="toggleFloatingScreen()">
+            <img src="static/images/Close Icon.png" alt="Close Icon">
+        </div>
+        <div class="floating-screen" id="floatingScreen">
+            <div class="avatar-container">
+                <img src="static/images/Avatar.png" alt="Avatar">
+                <div class="guest-user">Guest User</div>
+            </div>
+            <button class="button">My Profile</button>
+            <button class="button">Sent Request</button>
+            <button class="button">Viewed My Profile</button>
+            <button class="button">Accept Request</button>
+            <button class="button">Reject</button>
+            <button class="button">Received</button>
+            <button class="button">Shortlisted By</button>
+            <button class="button">Shortlisted</button>
+            <button class="button">Contacted</button>
+            <button class="button">Message</button>
+            <button class="button">Settings</button>
+            <div class="logout-container">
+                <img src="static/images/Logout.png" alt="Logout Icon">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleFloatingScreen() {
+            const floatingScreen = document.getElementById('floatingScreen');
+            const menuIcon = document.querySelector('.icon-container.menu');
+            const closeIcon = document.querySelector('.icon-container.close');
+            
+            floatingScreen.classList.toggle('show');
+            menuIcon.classList.toggle('hidden');
+            closeIcon.classList.toggle('hidden');
+        }
+    </script>
 </body>
 </html>
